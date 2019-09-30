@@ -14,6 +14,7 @@
 		084D6B0B2341931900F87B94 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 084D6B0A2341931900F87B94 /* Assets.xcassets */; };
 		084D6B0E2341931900F87B94 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 084D6B0C2341931900F87B94 /* LaunchScreen.storyboard */; };
 		084D6B192341931900F87B94 /* Unit_4_Photo_JournalTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 084D6B182341931900F87B94 /* Unit_4_Photo_JournalTests.swift */; };
+		084D6B2423419AF900F87B94 /* PhotoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 084D6B2323419AF900F87B94 /* PhotoCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,6 +39,7 @@
 		084D6B142341931900F87B94 /* Unit 4 Photo JournalTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Unit 4 Photo JournalTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		084D6B182341931900F87B94 /* Unit_4_Photo_JournalTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Unit_4_Photo_JournalTests.swift; sourceTree = "<group>"; };
 		084D6B1A2341931900F87B94 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		084D6B2323419AF900F87B94 /* PhotoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,12 +81,11 @@
 		084D6B002341931800F87B94 /* Unit 4 Photo Journal */ = {
 			isa = PBXGroup;
 			children = (
-				084D6B052341931800F87B94 /* ViewController.swift */,
 				084D6B072341931800F87B94 /* Main.storyboard */,
+				084D6B2523419B0100F87B94 /* View Controllers */,
+				084D6B2623419B1100F87B94 /* Views */,
 				084D6B0A2341931900F87B94 /* Assets.xcassets */,
-				084D6B0C2341931900F87B94 /* LaunchScreen.storyboard */,
-				084D6B012341931800F87B94 /* AppDelegate.swift */,
-				084D6B032341931800F87B94 /* SceneDelegate.swift */,
+				084D6B2723419B3B00F87B94 /* Supporting Files */,
 				084D6B0F2341931900F87B94 /* Info.plist */,
 			);
 			path = "Unit 4 Photo Journal";
@@ -97,6 +98,32 @@
 				084D6B1A2341931900F87B94 /* Info.plist */,
 			);
 			path = "Unit 4 Photo JournalTests";
+			sourceTree = "<group>";
+		};
+		084D6B2523419B0100F87B94 /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				084D6B052341931800F87B94 /* ViewController.swift */,
+			);
+			path = "View Controllers";
+			sourceTree = "<group>";
+		};
+		084D6B2623419B1100F87B94 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				084D6B2323419AF900F87B94 /* PhotoCollectionViewCell.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		084D6B2723419B3B00F87B94 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				084D6B0C2341931900F87B94 /* LaunchScreen.storyboard */,
+				084D6B012341931800F87B94 /* AppDelegate.swift */,
+				084D6B032341931800F87B94 /* SceneDelegate.swift */,
+			);
+			path = "Supporting Files";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -201,6 +228,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				084D6B062341931800F87B94 /* ViewController.swift in Sources */,
+				084D6B2423419AF900F87B94 /* PhotoCollectionViewCell.swift in Sources */,
 				084D6B022341931800F87B94 /* AppDelegate.swift in Sources */,
 				084D6B042341931800F87B94 /* SceneDelegate.swift in Sources */,
 			);
