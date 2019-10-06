@@ -21,8 +21,9 @@ class ViewController: UIViewController {
     
     //MARK: IBActions
     @IBAction func addNewEntryButtonPressed(_ sender: UIBarButtonItem) {
-        let newEntryVC = storyboard?.instantiateViewController(identifier: "NewEntryGalleryViewController") as! NewEntryGalleryViewController
-        navigationController?.pushViewController(newEntryVC, animated: true)
+        let imagePickerVC = UIImagePickerController()
+        imagePickerVC.delegate = self
+        present(imagePickerVC, animated: true)
     }
     
     override func viewDidLoad() {
@@ -33,6 +34,7 @@ class ViewController: UIViewController {
     //MARK: Custom Functions
     private func configureCollectionView() {
         photoCollectionView.dataSource = self
+        photoCollectionView.delegate = self
     }
 
 }
@@ -45,6 +47,9 @@ extension ViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = photoCollectionView.dequeueReusableCell(withReuseIdentifier: "photoCell", for: indexPath) as! PhotoCollectionViewCell
         
+        let photo = album[indexPath.row]
+        
+        cell.photoImageView.image = photo
         cell.nameLabel.text = "Name of photo"
         cell.dateLabel.text = "Date of photo"
         
@@ -53,7 +58,12 @@ extension ViewController: UICollectionViewDataSource {
         
         return cell
     }
-    
+}
+
+extension ViewController: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: 200, height: 200)
+    }
 }
 
 extension ViewController: PhotoCellDelegate {
@@ -77,4 +87,15 @@ extension ViewController: PhotoCellDelegate {
         
         self.present(optionsMenu, animated: true, completion: nil)
     }
+}
+
+extension ViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        guard let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage else {
+            return
+        }
+        album.append(image)
+        dismiss(animated: true, completion: nil)
+    }
+    
 }
