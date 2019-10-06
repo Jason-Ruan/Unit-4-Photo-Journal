@@ -37,5 +37,26 @@ class ViewController: UIViewController {
 
 }
 
+extension ViewController: UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return album.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let cell = photoCollectionView.dequeueReusableCell(withReuseIdentifier: "photoCell", for: indexPath) as? PhotoCollectionViewCell else {
+            print("Could not downcast cell as type PhotoCollectionViewCell")
+            return UICollectionViewCell()
+        }
+        
+        cell.nameLabel.text = "Name of photo"
+        cell.dateLabel.text = "Date of photo"
+        
+        cell.tag = indexPath.row
+        cell.delegate = self
+        
+        return cell
+    }
+    
+    
 }
 
