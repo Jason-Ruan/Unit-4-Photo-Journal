@@ -43,10 +43,7 @@ extension ViewController: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = photoCollectionView.dequeueReusableCell(withReuseIdentifier: "photoCell", for: indexPath) as? PhotoCollectionViewCell else {
-            print("Could not downcast cell as type PhotoCollectionViewCell")
-            return UICollectionViewCell()
-        }
+        let cell = photoCollectionView.dequeueReusableCell(withReuseIdentifier: "photoCell", for: indexPath) as! PhotoCollectionViewCell
         
         cell.nameLabel.text = "Name of photo"
         cell.dateLabel.text = "Date of photo"
@@ -56,7 +53,6 @@ extension ViewController: UICollectionViewDataSource {
         
         return cell
     }
-    
     
 }
 
