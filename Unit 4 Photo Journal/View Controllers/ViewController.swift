@@ -60,3 +60,25 @@ extension ViewController: UICollectionViewDataSource {
     
 }
 
+extension ViewController: PhotoCellDelegate {
+    func showActionSheet(tag: Int) {
+        let optionsMenu = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        
+        let deleteAction = UIAlertAction(title: "Delete", style: .destructive) { (action) in
+            print(tag)
+        }
+        
+        let editAction = UIAlertAction(title: "Edit", style: .default)
+        
+        let shareAction = UIAlertAction(title: "Share", style: .default)
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
+        
+        optionsMenu.addAction(deleteAction)
+        optionsMenu.addAction(editAction)
+        optionsMenu.addAction(shareAction)
+        optionsMenu.addAction(cancelAction)
+        
+        self.present(optionsMenu, animated: true, completion: nil)
+    }
+}
