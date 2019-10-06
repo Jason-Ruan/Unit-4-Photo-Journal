@@ -27,9 +27,15 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        configureCollectionView()
+    }
+    
+    //MARK: Custom Functions
+    private func configureCollectionView() {
+        photoCollectionView.dataSource = self
     }
 
+}
 
 }
 
