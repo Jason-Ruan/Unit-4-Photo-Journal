@@ -9,5 +9,17 @@
 import UIKit
 
 class PhotoCollectionViewCell: UICollectionViewCell {
+    //MARK: Properties
+    weak var delegate: PhotoCellDelegate?
+    
+    //MARK: IBOutlets
+    @IBOutlet weak var photoImageView: UIImageView!
+    @IBOutlet weak var dateLabel: UILabel!
+    @IBOutlet weak var nameLabel: UILabel!
+    
+    //MARK: IBActions
+    @IBAction func optionsButtonPressed(_ sender: UIButton) {
+        delegate?.showActionSheet(tag: sender.tag)
+    }
     
 }
