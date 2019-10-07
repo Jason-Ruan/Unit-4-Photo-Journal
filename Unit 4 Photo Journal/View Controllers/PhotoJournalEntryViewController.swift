@@ -46,11 +46,41 @@ class PhotoJournalEntryViewController: UIViewController {
 }
 
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+//MARK: ImagePicker & Navigation Delegates
+extension PhotoJournalEntryViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        guard let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage else {
+            return
+        }
+        
+        guard let asset = info[UIImagePickerController.InfoKey.phAsset] as? PHAsset  else {
+            print("Could not get asset")
+            return
+        }
+        
+        let assetResources = PHAssetResource.assetResources(for: asset)
+        
+        let name = assetResources.first!.originalFilename
+        let date = asset.creationDate!
+        
+        guard let imageData = image.pngData() else {
+            print("Could not convert image to pngData")
+            return
+        }
+        
+        var id  = (album.max { (a, b) -> Bool in a.id < b.id })?.id ?? -1
+        id += 1
+        
+        let photoObject = PhotoObject(imageData: imageData, id: id, name: name, date: date)
+        album.append(photoObject)
+        
+        do {
+            try PhotoObjectPersistenceHelper.manager.save(newPhotoObject: photoObject)
+        } catch {
+            print(error)
+        }
+        
+        dismiss(animated: true, completion: nil)
     }
-    */
-
+    
 }
