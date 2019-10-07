@@ -129,7 +129,10 @@ extension ViewController: PhotoCellDelegate {
             }
         }
         
-        let editAction = UIAlertAction(title: "Edit", style: .default)
+        let editAction = UIAlertAction(title: "Edit", style: .default) { (action) in
+            let photoJournalEntryVC = self.storyboard?.instantiateViewController(identifier: "PhotoJournalEntryViewController") as! PhotoJournalEntryViewController
+            self.present(photoJournalEntryVC, animated: true)
+        }
         
         let shareAction = UIAlertAction(title: "Share", style: .default)
         
