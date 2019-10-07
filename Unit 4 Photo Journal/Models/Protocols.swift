@@ -11,3 +11,7 @@ import Foundation
 protocol PhotoCellDelegate: AnyObject {
     func showActionSheet(tag: Int)
 }
+
+protocol PhotoJournalEntryDelegate: AnyObject {
+    func reloadAlbum()
+}
