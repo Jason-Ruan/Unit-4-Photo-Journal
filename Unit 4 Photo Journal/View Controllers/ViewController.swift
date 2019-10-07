@@ -25,21 +25,25 @@ class ViewController: UIViewController {
         let status = PHPhotoLibrary.authorizationStatus()
         
         if status == .authorized  {
-            let imagePickerVC = UIImagePickerController()
-            imagePickerVC.sourceType = .photoLibrary
-            imagePickerVC.allowsEditing = true
-            imagePickerVC.delegate = self
-            self.present(imagePickerVC, animated: true)
+            let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
+            let photoJournalEntryVC = storyboard.instantiateViewController(identifier: "PhotoJournalEntryViewController") as! PhotoJournalEntryViewController
             
+            photoJournalEntryVC.delegate = self
+            photoJournalEntryVC.album = self.album
+
+            self.present(photoJournalEntryVC, animated: true)
         } else {
             PHPhotoLibrary.requestAuthorization({status in
                 switch status {
                 case .authorized:
-                    DispatchQueue.main.async {
-                        let imagePickerVC = UIImagePickerController()
-                        imagePickerVC.delegate = self
-                        self.present(imagePickerVC, animated: true)
-                    }
+                    let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
+                    let photoJournalEntryVC = storyboard.instantiateViewController(identifier: "PhotoJournalEntryViewController") as! PhotoJournalEntryViewController
+                    
+                    photoJournalEntryVC.delegate = self
+                    photoJournalEntryVC.album = self.album
+                    
+                    self.present(photoJournalEntryVC, animated: true)
+                    
                 case .denied:
                     print("Go to settings to allow permissions")
                 case .notDetermined:
