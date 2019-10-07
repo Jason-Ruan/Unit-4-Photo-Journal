@@ -41,15 +41,15 @@ struct PersistenceHelper<T: Codable> {
         self.fileName = fileName
     }
     
-    private let documentsDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
+    let documentsDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
     
-    private func filePathFromDocumentsDirectory(name: String) -> URL {
+    func filePathFromDocumentsDirectory(name: String) -> URL {
         return documentsDirectory.appendingPathComponent(name)
     }
     
-    private let fileName: String
+    let fileName: String
     
-    private var url: URL {
+    var url: URL {
         return filePathFromDocumentsDirectory(name: fileName)
     }
 }
