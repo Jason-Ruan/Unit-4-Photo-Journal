@@ -22,9 +22,36 @@ class ViewController: UIViewController {
     
     //MARK: IBActions
     @IBAction func addNewEntryButtonPressed(_ sender: UIBarButtonItem) {
-        let imagePickerVC = UIImagePickerController()
-        imagePickerVC.delegate = self
-        present(imagePickerVC, animated: true)
+        let status = PHPhotoLibrary.authorizationStatus()
+        
+        if status == .authorized  {
+            let imagePickerVC = UIImagePickerController()
+            imagePickerVC.sourceType = .photoLibrary
+            imagePickerVC.allowsEditing = true
+            imagePickerVC.delegate = self
+            self.present(imagePickerVC, animated: true)
+            
+        } else {
+            PHPhotoLibrary.requestAuthorization({status in
+                switch status {
+                case .authorized:
+                    DispatchQueue.main.async {
+                        let imagePickerVC = UIImagePickerController()
+                        imagePickerVC.delegate = self
+                        self.present(imagePickerVC, animated: true)
+                    }
+                case .denied:
+                    print("Go to settings to allow permissions")
+                case .notDetermined:
+                    print("Go to settings to allow permissions")
+                case .restricted:
+                    print("Go to settings to allow permissions")
+                @unknown default:
+                    print("Go to settings to allow permissions")
+                }
+            })
+        }
+        
     }
     
     //MARK: LifeCycle Methods
@@ -50,7 +77,7 @@ class ViewController: UIViewController {
             print(error)
         }
     }
-
+    
 }
 
 //MARK: DataSource Methods
