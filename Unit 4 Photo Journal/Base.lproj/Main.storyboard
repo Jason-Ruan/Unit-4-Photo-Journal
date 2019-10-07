@@ -122,10 +122,10 @@
             </objects>
             <point key="canvasLocation" x="1047.8260869565217" y="112.5"/>
         </scene>
-        <!--New Entry Gallery View Controller-->
+        <!--Photo Journal Entry View Controller-->
         <scene sceneID="uNf-AF-ZRr">
             <objects>
-                <viewController storyboardIdentifier="NewEntryGalleryViewController" id="nAd-D4-1zG" customClass="NewEntryGalleryViewController" customModule="Unit_4_Photo_Journal" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PhotoJournalEntryViewController" id="nAd-D4-1zG" customClass="PhotoJournalEntryViewController" customModule="Unit_4_Photo_Journal" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="1MZ-pq-APZ">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
