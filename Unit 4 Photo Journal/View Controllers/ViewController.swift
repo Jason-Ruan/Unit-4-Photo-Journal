@@ -92,8 +92,8 @@ extension ViewController: UICollectionViewDataSource {
         let photo = album[indexPath.row]
         
         cell.photoImageView.image = UIImage(data: photo.imageData)
-        cell.nameLabel.text = "Name of photo: \(photo.imageData)"
-        cell.dateLabel.text = "ID of photo: \(photo.id)"
+        cell.nameLabel.text = "Name of photo: \(photo.name)"
+        cell.dateLabel.text = "Date of photo: \(photo.date)"
         
         cell.optionsButton.tag = indexPath.row
         cell.delegate = self
