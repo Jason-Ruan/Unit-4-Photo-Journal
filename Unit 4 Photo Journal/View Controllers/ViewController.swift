@@ -10,7 +10,7 @@ import UIKit
 
 class ViewController: UIViewController {
     //MARK: Properties
-    var album: [UIImage] = [UIImage()] {
+    var album: [PhotoObject] = [] {
         didSet {
             photoCollectionView.reloadData()
         }
@@ -26,6 +26,11 @@ class ViewController: UIViewController {
         present(imagePickerVC, animated: true)
     }
     
+    //MARK: LifeCycle Methods
+    override func viewWillAppear(_ animated: Bool) {
+        loadAlbum()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         configureCollectionView()
@@ -36,9 +41,18 @@ class ViewController: UIViewController {
         photoCollectionView.dataSource = self
         photoCollectionView.delegate = self
     }
+    
+    private func loadAlbum() {
+        do {
+            album = try PhotoObjectPersistenceHelper.manager.getAlbum()
+        } catch {
+            print(error)
+        }
+    }
 
 }
 
+//MARK: DataSource Methods
 extension ViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return album.count
