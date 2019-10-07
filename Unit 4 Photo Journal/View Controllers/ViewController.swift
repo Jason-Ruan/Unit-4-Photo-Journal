@@ -63,7 +63,7 @@ extension ViewController: UICollectionViewDataSource {
         
         let photo = album[indexPath.row]
         
-        cell.photoImageView.image = photo
+        cell.photoImageView.image = UIImage(data: photo.imageData)
         cell.nameLabel.text = "Name of photo"
         cell.dateLabel.text = "Date of photo"
         
@@ -74,12 +74,14 @@ extension ViewController: UICollectionViewDataSource {
     }
 }
 
+//MARK: Delegate Flow Layout
 extension ViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: 200, height: 200)
     }
 }
 
+//MARK: PhotoCell Delegate
 extension ViewController: PhotoCellDelegate {
     func showActionSheet(tag: Int) {
         let optionsMenu = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
@@ -103,12 +105,28 @@ extension ViewController: PhotoCellDelegate {
     }
 }
 
+//MARK: ImagePicker & Navigation Delegates
 extension ViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         guard let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage else {
             return
         }
-        album.append(image)
+        
+        guard let imageData = image.pngData() else {
+            print("Could not convert image to pngData")
+            return
+        }
+        let id  = (album.max { (a, b) -> Bool in a.id < b.id }?.id) ?? 0
+        
+        let photoObject = PhotoObject(imageData: imageData, id: id)
+        album.append(photoObject)
+        
+        do {
+            try PhotoObjectPersistenceHelper.manager.save(newPhotoObject: photoObject)
+        } catch {
+            print(error)
+        }
+        
         dismiss(animated: true, completion: nil)
     }
     
