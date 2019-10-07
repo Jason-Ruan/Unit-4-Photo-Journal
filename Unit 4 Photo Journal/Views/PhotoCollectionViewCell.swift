@@ -16,6 +16,7 @@ class PhotoCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var photoImageView: UIImageView!
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var optionsButton: UIButton!
     
     //MARK: IBActions
     @IBAction func optionsButtonPressed(_ sender: UIButton) {

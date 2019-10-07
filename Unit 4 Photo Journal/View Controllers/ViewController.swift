@@ -64,10 +64,10 @@ extension ViewController: UICollectionViewDataSource {
         let photo = album[indexPath.row]
         
         cell.photoImageView.image = UIImage(data: photo.imageData)
-        cell.nameLabel.text = "Name of photo"
-        cell.dateLabel.text = "Date of photo"
+        cell.nameLabel.text = "Name of photo: \(photo.imageData)"
+        cell.dateLabel.text = "ID of photo: \(photo.id)"
         
-        cell.tag = indexPath.row
+        cell.optionsButton.tag = indexPath.row
         cell.delegate = self
         
         return cell
@@ -86,8 +86,15 @@ extension ViewController: PhotoCellDelegate {
     func showActionSheet(tag: Int) {
         let optionsMenu = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         
+        let currentObject = album[tag]
+        
         let deleteAction = UIAlertAction(title: "Delete", style: .destructive) { (action) in
-            print(tag)
+            do {
+                try PhotoObjectPersistenceHelper.manager.delete(photoID: currentObject.id)
+                self.loadAlbum()
+            } catch {
+                print("Could not delete object")
+            }
         }
         
         let editAction = UIAlertAction(title: "Edit", style: .default)
@@ -116,7 +123,9 @@ extension ViewController: UIImagePickerControllerDelegate, UINavigationControlle
             print("Could not convert image to pngData")
             return
         }
-        let id  = (album.max { (a, b) -> Bool in a.id < b.id }?.id) ?? 0
+        
+        var id  = (album.max { (a, b) -> Bool in a.id < b.id })?.id ?? -1
+        id += 1
         
         let photoObject = PhotoObject(imageData: imageData, id: id)
         album.append(photoObject)

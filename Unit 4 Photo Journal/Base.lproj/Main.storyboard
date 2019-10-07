@@ -80,6 +80,7 @@
                                         <connections>
                                             <outlet property="dateLabel" destination="aze-tJ-3z5" id="9EO-Ab-pIR"/>
                                             <outlet property="nameLabel" destination="FM3-Cd-ilk" id="O75-yg-5NT"/>
+                                            <outlet property="optionsButton" destination="HZ8-QF-SQj" id="aZj-bJ-KiZ"/>
                                             <outlet property="photoImageView" destination="NjH-IO-urZ" id="3Vj-Gr-xDX"/>
                                         </connections>
                                     </collectionViewCell>
