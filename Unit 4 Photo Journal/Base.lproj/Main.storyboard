@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="gPn-6k-EGi">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="gPn-6k-EGi">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15404"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -129,13 +129,78 @@
                     <view key="view" contentMode="scaleToFill" id="1MZ-pq-APZ">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Text VIew" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="oLd-Wz-Duc">
+                                <rect key="frame" x="0.0" y="88" width="414" height="248"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="248" id="b78-i2-Uaf"/>
+                                </constraints>
+                                <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="R6Q-BU-P4f">
+                                <rect key="frame" x="0.0" y="411" width="414" height="327"/>
+                            </imageView>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tXo-p8-uPa">
+                                <rect key="frame" x="0.0" y="813" width="414" height="49"/>
+                                <items>
+                                    <barButtonItem title="Photo Library" id="8e7-ci-yas">
+                                        <connections>
+                                            <action selector="photoLibraryButtonPressed:" destination="nAd-D4-1zG" id="jaT-DO-nB4"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="QnC-6q-Rwx"/>
+                                    <barButtonItem systemItem="camera" id="wOq-ja-tex">
+                                        <connections>
+                                            <action selector="cameraButtonPressed:" destination="nAd-D4-1zG" id="AgW-Wz-vvW"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Va6-9d-CAf">
+                                <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                                <items>
+                                    <barButtonItem systemItem="cancel" id="9Ow-tN-ATS">
+                                        <connections>
+                                            <action selector="cancelButtonPressed:" destination="nAd-D4-1zG" id="CKp-E4-eke"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="3er-ph-oeM"/>
+                                    <barButtonItem systemItem="save" id="kgI-DV-xTp">
+                                        <connections>
+                                            <action selector="saveButtonPressed:" destination="nAd-D4-1zG" id="FvE-QY-Ake"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
+                        </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="Roa-xU-wYf" firstAttribute="trailing" secondItem="oLd-Wz-Duc" secondAttribute="trailing" id="0LS-eP-nki"/>
+                            <constraint firstItem="Roa-xU-wYf" firstAttribute="trailing" secondItem="R6Q-BU-P4f" secondAttribute="trailing" id="5Ma-xW-cN3"/>
+                            <constraint firstItem="Va6-9d-CAf" firstAttribute="top" secondItem="Roa-xU-wYf" secondAttribute="top" id="FSd-wv-LcH"/>
+                            <constraint firstItem="Roa-xU-wYf" firstAttribute="trailing" secondItem="tXo-p8-uPa" secondAttribute="trailing" id="G9u-Ca-rMk"/>
+                            <constraint firstItem="Va6-9d-CAf" firstAttribute="leading" secondItem="Roa-xU-wYf" secondAttribute="leading" id="HLy-Ik-fO1"/>
+                            <constraint firstItem="tXo-p8-uPa" firstAttribute="leading" secondItem="Roa-xU-wYf" secondAttribute="leading" id="M9k-e2-yQc"/>
+                            <constraint firstItem="Va6-9d-CAf" firstAttribute="trailing" secondItem="Roa-xU-wYf" secondAttribute="trailing" id="Qd0-zE-0OK"/>
+                            <constraint firstItem="oLd-Wz-Duc" firstAttribute="top" secondItem="Va6-9d-CAf" secondAttribute="bottom" id="fGn-x0-Vxr"/>
+                            <constraint firstItem="oLd-Wz-Duc" firstAttribute="leading" secondItem="Roa-xU-wYf" secondAttribute="leading" id="lB1-hf-9yK"/>
+                            <constraint firstItem="Roa-xU-wYf" firstAttribute="bottom" secondItem="tXo-p8-uPa" secondAttribute="bottom" id="pkk-9W-3y4"/>
+                            <constraint firstItem="tXo-p8-uPa" firstAttribute="top" secondItem="R6Q-BU-P4f" secondAttribute="bottom" constant="75" id="x2I-BB-Trb"/>
+                            <constraint firstItem="R6Q-BU-P4f" firstAttribute="leading" secondItem="Roa-xU-wYf" secondAttribute="leading" id="xKK-1h-SYO"/>
+                            <constraint firstItem="R6Q-BU-P4f" firstAttribute="top" secondItem="oLd-Wz-Duc" secondAttribute="bottom" constant="75" id="xPj-yz-JOK"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="Roa-xU-wYf"/>
                     </view>
+                    <connections>
+                        <outlet property="entryImageView" destination="R6Q-BU-P4f" id="wcj-GX-hSl"/>
+                        <outlet property="entryTextView" destination="oLd-Wz-Duc" id="ehZ-AC-93D"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6Io-jC-h01" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1887" y="113"/>
+            <point key="canvasLocation" x="1886.9565217391305" y="112.5"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="IYE-zW-4bN">

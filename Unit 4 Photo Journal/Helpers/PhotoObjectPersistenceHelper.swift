@@ -16,7 +16,7 @@ struct PhotoObjectPersistenceHelper {
     }
 
     func delete(photoID: Int) throws {
-        var elements = try getAlbum()
+        let elements = try getAlbum()
         let newElements = elements.filter { $0.id != photoID }
         let serializedData = try PropertyListEncoder().encode(newElements)
         try serializedData.write(to: persistenceHelper.url, options: Data.WritingOptions.atomic)
