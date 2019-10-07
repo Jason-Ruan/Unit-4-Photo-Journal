@@ -41,36 +41,36 @@
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date of Photo" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aze-tJ-3z5">
-                                                    <rect key="frame" x="26" y="379" width="94.5" height="18"/>
+                                                    <rect key="frame" x="25" y="379" width="364" height="18"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HZ8-QF-SQj">
-                                                    <rect key="frame" x="335" y="289.5" width="54" height="30"/>
+                                                    <rect key="frame" x="335" y="289.5" width="54" height="31"/>
                                                     <state key="normal" title="Options"/>
                                                     <connections>
                                                         <action selector="optionsButtonPressed:" destination="wZw-76-0vx" eventType="touchUpInside" id="ic6-SY-hMN"/>
                                                     </connections>
                                                 </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name of Photo" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FM3-Cd-ilk">
-                                                    <rect key="frame" x="26" y="327.5" width="118.5" height="20.5"/>
+                                                    <rect key="frame" x="25" y="328.5" width="364" height="20.5"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="FM3-Cd-ilk" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="iL2-QU-XtX" secondAttribute="leading" constant="20" symbolic="YES" id="2JP-17-mh7"/>
+                                                <constraint firstItem="FM3-Cd-ilk" firstAttribute="leading" secondItem="iL2-QU-XtX" secondAttribute="leading" constant="25" id="2JP-17-mh7"/>
                                                 <constraint firstItem="NjH-IO-urZ" firstAttribute="top" secondItem="iL2-QU-XtX" secondAttribute="top" id="57N-Md-aYM"/>
-                                                <constraint firstItem="aze-tJ-3z5" firstAttribute="top" secondItem="FM3-Cd-ilk" secondAttribute="bottom" constant="31" id="7kW-7g-9wg"/>
+                                                <constraint firstItem="aze-tJ-3z5" firstAttribute="top" secondItem="FM3-Cd-ilk" secondAttribute="bottom" constant="30" id="7kW-7g-9wg"/>
                                                 <constraint firstItem="FM3-Cd-ilk" firstAttribute="top" secondItem="HZ8-QF-SQj" secondAttribute="bottom" constant="8" id="BHC-fC-SZY"/>
-                                                <constraint firstItem="aze-tJ-3z5" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="iL2-QU-XtX" secondAttribute="leading" symbolic="YES" id="Cny-gO-3lk"/>
+                                                <constraint firstItem="aze-tJ-3z5" firstAttribute="leading" secondItem="iL2-QU-XtX" secondAttribute="leading" constant="25" id="Cny-gO-3lk"/>
                                                 <constraint firstItem="HZ8-QF-SQj" firstAttribute="top" secondItem="NjH-IO-urZ" secondAttribute="bottom" constant="8" id="FXv-1n-JBh"/>
-                                                <constraint firstAttribute="trailing" secondItem="aze-tJ-3z5" secondAttribute="trailing" constant="293.5" id="H8A-AX-sV9"/>
+                                                <constraint firstAttribute="trailing" secondItem="aze-tJ-3z5" secondAttribute="trailing" constant="25" id="H8A-AX-sV9"/>
                                                 <constraint firstItem="NjH-IO-urZ" firstAttribute="leading" secondItem="iL2-QU-XtX" secondAttribute="leading" id="Pnr-eZ-5Ed"/>
                                                 <constraint firstAttribute="trailing" secondItem="NjH-IO-urZ" secondAttribute="trailing" id="UC4-cZ-iqS"/>
-                                                <constraint firstAttribute="trailing" secondItem="FM3-Cd-ilk" secondAttribute="trailing" constant="269.5" id="Ve9-1V-6R1"/>
+                                                <constraint firstAttribute="trailing" secondItem="FM3-Cd-ilk" secondAttribute="trailing" constant="25" id="Ve9-1V-6R1"/>
                                                 <constraint firstItem="HZ8-QF-SQj" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="iL2-QU-XtX" secondAttribute="leading" constant="20" symbolic="YES" id="dMg-64-u9n"/>
                                                 <constraint firstAttribute="trailing" secondItem="HZ8-QF-SQj" secondAttribute="trailing" constant="25" id="fkf-Ac-P2n"/>
                                                 <constraint firstAttribute="bottom" secondItem="aze-tJ-3z5" secondAttribute="bottom" constant="17" id="g5x-4W-F4I"/>
