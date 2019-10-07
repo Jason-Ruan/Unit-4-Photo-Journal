@@ -147,6 +147,16 @@ extension ViewController: UIImagePickerControllerDelegate, UINavigationControlle
             return
         }
         
+        guard let asset = info[UIImagePickerController.InfoKey.phAsset] as? PHAsset  else {
+            print("Could not get asset")
+            return
+        }
+        
+        let assetResources = PHAssetResource.assetResources(for: asset)
+        
+        let name = assetResources.first!.originalFilename
+        let date = asset.creationDate!
+        
         guard let imageData = image.pngData() else {
             print("Could not convert image to pngData")
             return
@@ -155,7 +165,7 @@ extension ViewController: UIImagePickerControllerDelegate, UINavigationControlle
         var id  = (album.max { (a, b) -> Bool in a.id < b.id })?.id ?? -1
         id += 1
         
-        let photoObject = PhotoObject(imageData: imageData, id: id)
+        let photoObject = PhotoObject(imageData: imageData, id: id, name: name, date: date)
         album.append(photoObject)
         
         do {
