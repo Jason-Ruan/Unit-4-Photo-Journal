@@ -18,6 +18,8 @@
 		084D6B29234243A700F87B94 /* NewEntryGalleryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 084D6B28234243A700F87B94 /* NewEntryGalleryViewController.swift */; };
 		08694C15234AA88A009E7062 /* Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08694C14234AA88A009E7062 /* Protocols.swift */; };
 		08694C18234AAC07009E7062 /* PersistenceHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08694C17234AAC07009E7062 /* PersistenceHelper.swift */; };
+		08694C1B234AB220009E7062 /* PhotoObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08694C1A234AB220009E7062 /* PhotoObject.swift */; };
+		08694C1D234AD3E1009E7062 /* PhotoObjectPersistenceHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08694C1C234AD3E1009E7062 /* PhotoObjectPersistenceHelper.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,6 +48,8 @@
 		084D6B28234243A700F87B94 /* NewEntryGalleryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewEntryGalleryViewController.swift; sourceTree = "<group>"; };
 		08694C14234AA88A009E7062 /* Protocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Protocols.swift; sourceTree = "<group>"; };
 		08694C17234AAC07009E7062 /* PersistenceHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceHelper.swift; sourceTree = "<group>"; };
+		08694C1A234AB220009E7062 /* PhotoObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoObject.swift; sourceTree = "<group>"; };
+		08694C1C234AD3E1009E7062 /* PhotoObjectPersistenceHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoObjectPersistenceHelper.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -139,6 +143,7 @@
 			isa = PBXGroup;
 			children = (
 				08694C14234AA88A009E7062 /* Protocols.swift */,
+				08694C1A234AB220009E7062 /* PhotoObject.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -147,6 +152,7 @@
 			isa = PBXGroup;
 			children = (
 				08694C17234AAC07009E7062 /* PersistenceHelper.swift */,
+				08694C1C234AD3E1009E7062 /* PhotoObjectPersistenceHelper.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -253,10 +259,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				084D6B29234243A700F87B94 /* NewEntryGalleryViewController.swift in Sources */,
+				08694C1D234AD3E1009E7062 /* PhotoObjectPersistenceHelper.swift in Sources */,
 				084D6B062341931800F87B94 /* ViewController.swift in Sources */,
 				084D6B2423419AF900F87B94 /* PhotoCollectionViewCell.swift in Sources */,
 				08694C18234AAC07009E7062 /* PersistenceHelper.swift in Sources */,
 				08694C15234AA88A009E7062 /* Protocols.swift in Sources */,
+				08694C1B234AB220009E7062 /* PhotoObject.swift in Sources */,
 				084D6B022341931800F87B94 /* AppDelegate.swift in Sources */,
 				084D6B042341931800F87B94 /* SceneDelegate.swift in Sources */,
 			);
