@@ -7,13 +7,19 @@
 //
 
 import UIKit
+import Photos
 
 class PhotoJournalEntryViewController: UIViewController {
-
+    //MARK: Properties
+    var album: [PhotoObject]!
+    weak var delegate: PhotoJournalEntryDelegate?
+    
+    //MARK: IBOutlets
+    @IBOutlet weak var entryTextView: UITextView!
+    @IBOutlet weak var entryImageView: UIImageView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
     }
     
 
