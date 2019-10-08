@@ -13,18 +13,17 @@ class PhotoJournalEntryViewController: UIViewController {
     //MARK: Properties
     var album: [PhotoObject]!
     weak var delegate: PhotoJournalEntryDelegate?
+    var userWantsToEdit = false
+    var tag: Int?
     
-    var photoName: String? {
-        didSet {
-            entryTextView.text = self.photoName
-        }
-    }
+    var photoJournalEntry: PhotoObject?
     
+    var photoName: String?
     var photoImageData: Data?
     var photoDate: Date?
     var idNumber: Int?
     
-    var newPhotoObject: PhotoObject?
+    
     
     //MARK: IBOutlets
     @IBOutlet weak var entryTextView: UITextView!
