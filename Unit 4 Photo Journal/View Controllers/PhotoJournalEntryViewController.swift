@@ -33,6 +33,7 @@ class PhotoJournalEntryViewController: UIViewController {
         super.viewDidLoad()
         self.view.backgroundColor = .gray
         entryImageView.image = UIImage(named: "placeHolderImageView")
+        setUpViews()
         entryTextView!.delegate = self
     }
     
@@ -70,6 +71,20 @@ class PhotoJournalEntryViewController: UIViewController {
     }
     
     @IBAction func cameraButtonPressed(_ sender: UIBarButtonItem) {
+    }
+    
+    //MARK: Custom Functions
+    private func setUpViews() {
+        if let tag = tag {
+            let currentPhotoObject = album[tag]
+            
+            entryTextView.text = currentPhotoObject.name
+            photoImageData = currentPhotoObject.imageData
+            photoDate = currentPhotoObject.date
+            idNumber = currentPhotoObject.id
+            
+            entryImageView.image = UIImage(data: currentPhotoObject.imageData)
+        }
     }
     
 }
