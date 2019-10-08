@@ -44,19 +44,44 @@ class PhotoJournalEntryViewController: UIViewController {
     }
     
     @IBAction func saveButtonPressed(_ sender: UIBarButtonItem) {
-        guard let photoName = photoName, let photoImageData = photoImageData, let photoDate = photoDate, let idNumber = idNumber else {
-            print("Missing a parameter for photoObject")
-            return
-        }
-        
-        let photoObject = PhotoObject(imageData: photoImageData, id: idNumber, name: photoName, date: photoDate)
-        
-        newPhotoObject = photoObject
-        
-        do {
-            try PhotoObjectPersistenceHelper.manager.save(newPhotoObject: newPhotoObject!)
-        } catch {
-            print(error)
+        if userWantsToEdit {
+            guard let photoName = photoName, let photoImageData = photoImageData, let photoDate = photoDate, let idNumber = idNumber else {
+                print("Missing a parameter for item to be editted")
+                print(self.photoName != nil)
+                print(self.photoDate != nil)
+                print(self.photoImageData != nil)
+                print(self.idNumber != nil)
+                return
+            }
+            
+            guard let tag = self.tag else { return }
+            
+            album[tag].name = photoName
+            album[tag].date = photoDate
+            album[tag].id = idNumber
+            album[tag].imageData = photoImageData
+            
+            do {
+                try PhotoObjectPersistenceHelper.manager.update(updatedArray: album)
+            } catch {
+                print("Could not update album: \(error)")
+            }
+            
+        } else {
+            guard let photoName = photoName, let photoImageData = photoImageData, let photoDate = photoDate, let idNumber = idNumber else {
+                print("Missing a parameter for photoObject")
+                return
+            }
+            
+            let photoObject = PhotoObject(imageData: photoImageData, id: idNumber, name: photoName, date: photoDate)
+            
+            photoJournalEntry = photoObject
+            
+            do {
+                try PhotoObjectPersistenceHelper.manager.save(newPhotoObject: photoJournalEntry!)
+            } catch {
+                print(error)
+            }
         }
         
         delegate?.reloadAlbum()
