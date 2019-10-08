@@ -87,27 +87,32 @@ extension PhotoJournalEntryViewController: UIImagePickerControllerDelegate, UINa
         
         let assetResources = PHAssetResource.assetResources(for: asset)
         
-        let name = assetResources.first!.originalFilename
-        let date = asset.creationDate!
-        
-        guard let imageData = image.pngData() else {
-            print("Could not convert image to pngData")
-            return
+        if photoName == nil {
+            photoName = assetResources.first!.originalFilename
         }
         
-        var id  = (album.max { (a, b) -> Bool in a.id < b.id })?.id ?? -1
-        id += 1
-        
-        let photoObject = PhotoObject(imageData: imageData, id: id, name: name, date: date)
-        album.append(photoObject)
-        
-        do {
-            try PhotoObjectPersistenceHelper.manager.save(newPhotoObject: photoObject)
-        } catch {
-            print(error)
+        if let date = asset.creationDate {
+            photoDate = date
         }
+        
+        if let imageData = image.pngData() {
+            photoImageData = imageData
+        }
+        
+        idNumber = (album.max { (a, b) -> Bool in a.id < b.id })?.id ?? -1
+        idNumber! += 1
+        
+        self.entryImageView.image = UIImage(data: photoImageData!)
+        
+        self.entryTextView.text = photoName
         
         dismiss(animated: true, completion: nil)
     }
     
+}
+
+extension PhotoJournalEntryViewController: UITextViewDelegate {
+    func textViewDidChange(_ textView: UITextView) {
+        photoName = textView.text
+    }
 }
