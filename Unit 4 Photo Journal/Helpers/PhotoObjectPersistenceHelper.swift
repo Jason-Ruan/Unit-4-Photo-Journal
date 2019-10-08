@@ -22,6 +22,10 @@ struct PhotoObjectPersistenceHelper {
         try serializedData.write(to: persistenceHelper.url, options: Data.WritingOptions.atomic)
     }
     
+    func update(updatedArray: [PhotoObject]) throws {
+        try persistenceHelper.update(updatedArray: updatedArray)
+    }
+    
     func getAlbum() throws -> [PhotoObject] {
         return try persistenceHelper.getObjects()
     }

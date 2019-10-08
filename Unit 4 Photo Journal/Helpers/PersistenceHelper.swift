@@ -37,6 +37,13 @@ struct PersistenceHelper<T: Codable> {
         try serializedData.write(to: url, options: Data.WritingOptions.atomic)
     }
     
+    func update(updatedArray: [T]) throws {
+        var elements = try getObjects()
+        elements = updatedArray
+        let serializedData = try PropertyListEncoder().encode(elements)
+        try serializedData.write(to: url, options: Data.WritingOptions.atomic)
+    }
+    
     init(fileName: String){
         self.fileName = fileName
     }
