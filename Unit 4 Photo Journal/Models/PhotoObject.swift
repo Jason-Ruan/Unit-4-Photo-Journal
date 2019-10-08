@@ -9,8 +9,8 @@
 import Foundation
 
 struct PhotoObject: Codable {
-    let imageData: Data
-    let id: Int
-    let name: String
-    let date: Date
+    var imageData: Data
+    var id: Int
+    var name: String
+    var date: Date
 }
