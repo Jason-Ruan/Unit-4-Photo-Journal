@@ -44,6 +44,18 @@ class PhotoJournalEntryViewController: UIViewController {
     }
     
     @IBAction func saveButtonPressed(_ sender: UIBarButtonItem) {
+        guard let photoName = photoName, let photoImageData = photoImageData, let photoDate = photoDate, let idNumber = idNumber else { return }
+        
+        let photoObject = PhotoObject(imageData: photoImageData, id: idNumber, name: photoName, date: photoDate)
+        
+        newPhotoObject = photoObject
+        
+        do {
+            try PhotoObjectPersistenceHelper.manager.save(newPhotoObject: newPhotoObject!)
+        } catch {
+            print(error)
+        }
+        
         delegate?.reloadAlbum()
         self.dismiss(animated: true)
     }
