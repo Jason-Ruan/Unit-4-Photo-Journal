@@ -131,6 +131,10 @@ extension ViewController: PhotoCellDelegate {
         
         let editAction = UIAlertAction(title: "Edit", style: .default) { (action) in
             let photoJournalEntryVC = self.storyboard?.instantiateViewController(identifier: "PhotoJournalEntryViewController") as! PhotoJournalEntryViewController
+            photoJournalEntryVC.tag = tag
+            photoJournalEntryVC.album = self.album
+            photoJournalEntryVC.userWantsToEdit = true
+            photoJournalEntryVC.delegate = self
             self.present(photoJournalEntryVC, animated: true)
         }
         
