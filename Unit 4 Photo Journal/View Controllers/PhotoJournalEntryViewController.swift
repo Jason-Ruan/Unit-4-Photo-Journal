@@ -14,12 +14,27 @@ class PhotoJournalEntryViewController: UIViewController {
     var album: [PhotoObject]!
     weak var delegate: PhotoJournalEntryDelegate?
     
+    var photoName: String? {
+        didSet {
+            entryTextView.text = self.photoName
+        }
+    }
+    
+    var photoImageData: Data?
+    var photoDate: Date?
+    var idNumber: Int?
+    
+    var newPhotoObject: PhotoObject?
+    
     //MARK: IBOutlets
     @IBOutlet weak var entryTextView: UITextView!
     @IBOutlet weak var entryImageView: UIImageView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.view.backgroundColor = .gray
+        entryImageView.image = UIImage(named: "placeHolderImageView")
+        entryTextView!.delegate = self
     }
     
     //MARK: IBActions
